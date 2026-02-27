@@ -1,0 +1,57 @@
+@baseUrl = http://localhost:4000/api/workouts
+@token = eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTlkNjQ3ZDJhMWE3MTBkZjliMGY5MTYiLCJpYXQiOjE3NzE5MjI1ODgsImV4cCI6MTc3MjE4MTc4OH0.G6XX_BK104A4n3CWfA5G9219Hz6e_--Md-UiM6hNWIM
+
+### 1️⃣ GET ALL WORKOUTS
+GET {{baseUrl}}
+Authorization: Bearer {{token}}
+
+### 2️⃣ CREATE A NEW WORKOUT
+# @name createWorkout
+POST {{baseUrl}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Bench Press",
+  "load": 80,
+  "reps": 10,
+  "category": "chest"
+}
+
+
+### 3️⃣ GET SINGLE WORKOUT
+@workoutId = {{createWorkout.response.body._id}}
+GET {{baseUrl}}/{{workoutId}}
+Authorization: Bearer {{token}}
+
+### 4️⃣ UPDATE WORKOUT
+PATCH {{baseUrl}}/{{workoutId}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "load": 100,
+  "reps": 20
+}
+
+
+### 5️⃣ DELETE WORKOUT
+DELETE {{baseUrl}}/{{workoutId}}
+Authorization: Bearer {{token}}
+
+### CREATE WORKOUT WITH CATEGORY
+POST {{baseUrl}}
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTlkNjQ3ZDJhMWE3MTBkZjliMGY5MTYiLCJpYXQiOjE3NzE5MjI1ODgsImV4cCI6MTc3MjE4MTc4OH0.G6XX_BK104A4n3CWfA5G9219Hz6e_--Md-UiM6hNWIM
+
+{
+  "title": "Bench Press",
+  "load": 100,
+  "reps": 10,
+  "category": "Chest"
+}
+
+### 6️⃣ WORKOUT ANALYTICS (CATEGORY WISE)
+GET http://localhost:4000/api/workouts/analytics/summary
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2OTlkNjQ3ZDJhMWE3MTBkZjliMGY5MTYiLCJpYXQiOjE3NzE5MjI1ODgsImV4cCI6MTc3MjE4MTc4OH0.G6XX_BK104A4n3CWfA5G9219Hz6e_--Md-UiM6hNWIM
+

@@ -31,6 +31,13 @@ app.use((req, res, next) => {
 app.use('/api/workouts', workoutRoutes)
 app.use('/api/user', userRoutes)
 
+app.get("/health", (req, res) => {
+  res.status(200).json({
+    status: ok,
+    messages : 'server is healthy'
+  });
+});
+
 // DB
 mongoose.connect(process.env.MONGO_URI, { family: 4 })
   .then(() => {

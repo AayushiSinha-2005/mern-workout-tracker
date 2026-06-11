@@ -14,8 +14,8 @@ const PORT = process.env.PORT || 4000
 // 🔥 IMPORTANT: CORS MUST BE FIRST MIDDLEWARE
 app.use(cors({
   origin: "https://workout-buddy-aayushi.netlify.app",
-  methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS"],
-  allowedHeaders: ["Content-Type", "Authorization"]
+  methods: ["GET", "POST", "PATCH", "DELETE", "OPTIONS", "PUT"],
+  allowedHeaders: '*'
 }));
 
 app.options("*", cors());

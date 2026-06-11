@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import EditModal from './EditModal'
+// import EditModal from './EditModal'
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
 import { useAuthContext } from '../hooks/useAuthContext'
 import { FaEdit, FaTrash } from 'react-icons/fa'
@@ -13,7 +13,7 @@ const WorkoutDetails = ({ workout }) => {
   const [load, setLoad] = useState(workout.load)
   const [reps, setReps] = useState(workout.reps)
   const [category, setCategory] = useState(workout.category)
-  const [showModal, setShowModal] = useState(false);
+  // const [showModal, setShowModal] = useState(false);
   const handleDelete = async () => {
     if (!user) return
 

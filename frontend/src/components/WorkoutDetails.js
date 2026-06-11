@@ -1,3 +1,4 @@
+import BASE_URL from '../config'
 import { useState } from 'react'
 // import EditModal from './EditModal'
 import { useWorkoutsContext } from '../hooks/useWorkoutsContext'
@@ -17,12 +18,12 @@ const WorkoutDetails = ({ workout }) => {
   const handleDelete = async () => {
     if (!user) return
 
-    const response = await fetch('/api/workouts/' + workout._id, {
-      method: 'DELETE',
-      headers: {
-        'Authorization': `Bearer ${user.token}`
-      }
-    })
+    const response = await fetch(`${BASE_URL}/workouts/${workout._id}`, {
+  method: 'DELETE',
+  headers: {
+    'Authorization': `Bearer ${user.token}`
+  }
+})
 
     const json = await response.json()
 
@@ -36,7 +37,7 @@ const WorkoutDetails = ({ workout }) => {
 
     const updatedWorkout = { title, load, reps, category }
 
-    const response = await fetch('/api/workouts/' + workout._id, {
+    const response = await fetch(`${BASE_URL}/workouts/${workout._id}`, {
       method: 'PATCH',
       body: JSON.stringify(updatedWorkout),
       headers: {

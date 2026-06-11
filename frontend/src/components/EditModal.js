@@ -1,3 +1,4 @@
+import BASE_URL from "../config";
 import { useState } from "react";
 
 const EditModal = ({ workout, onClose, onUpdate }) => {
@@ -9,13 +10,14 @@ const EditModal = ({ workout, onClose, onUpdate }) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const response = await fetch(`/api/workouts/${workout._id}`, {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({ title, load, reps, category }),
-    });
+    const response = await fetch(`${BASE_URL}/workouts/${workout._id}`, {
+  method: "PATCH",
+  headers: {
+    "Content-Type": "application/json",
+    "Authorization": `Bearer ${user.token}`   // IMPORTANT FIX
+  },
+  body: JSON.stringify({ title, load, reps, category }),
+});
 
     const json = await response.json();
 

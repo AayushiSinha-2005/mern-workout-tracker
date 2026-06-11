@@ -1,3 +1,4 @@
+import BASE_URL from '../config'
 import { useEffect, useState } from 'react'
 
 // components
@@ -15,7 +16,7 @@ const Home = () => {
 
   useEffect(() => {
     const fetchWorkouts = async () => {
-      const response = await fetch('/api/workouts', {
+      const response = await fetch(`${BASE_URL}/workouts`, {
         headers: {
           'Authorization': `Bearer ${user.token}`
         }
